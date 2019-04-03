@@ -39,7 +39,6 @@ public class LoadingEdgeButton: LoadingButton {
         let layer = CAShapeLayer()
         layer.path = self.drawable.getPath(bounds: self.bounds, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius).cgPath
         layer.lineWidth = self.borderWidth
-        layer.lineCap = .round
         layer.strokeColor = self.borderColor.cgColor
         layer.fillColor = nil
         self.layer.addSublayer(layer)
@@ -84,9 +83,13 @@ public class LoadingEdgeButton: LoadingButton {
         
         if let value = anim.value(forKey: "start") as? String, let layer = anim.value(forKey: "layer") as? CAShapeLayer {
             if value == "clockwise" {
+//                layer.removeFromSuperlayer()
+//                self.animationLayers.removeAll()
+//                animateCounter(delay: CACurrentMediaTime() + 0.4)
+                
                 layer.removeFromSuperlayer()
                 self.animationLayers.removeAll()
-                animateCounter(delay: CACurrentMediaTime() + 0.4)
+                animateClockwise(delay: CACurrentMediaTime())
             } else if value == "counter" {
 
                 layer.removeFromSuperlayer()

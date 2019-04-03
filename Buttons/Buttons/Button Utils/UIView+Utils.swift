@@ -86,8 +86,6 @@ extension UIView {
         return path
     }
     
-    
-    
     func foo() {
         let width: CGFloat = 3
         

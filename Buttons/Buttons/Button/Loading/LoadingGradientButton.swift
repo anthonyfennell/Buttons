@@ -9,8 +9,12 @@
 import UIKit
 
 public class LoadingGradientButton: LoadingButton {
+    private var title: String?
     
     public override  func animateLoading() {
+        title = self.title(for: .normal)
+        self.setTitle(nil, for: .normal)
+        
         let gradientLayer = getGradientLayer()
         let maskLayer = getMaskLayer()
         self.layer.addSublayer(gradientLayer)
@@ -26,6 +30,11 @@ public class LoadingGradientButton: LoadingButton {
         animation.duration = 3.0
         animation.repeatCount = .infinity
         gradientLayer.add(animation, forKey: nil)
+    }
+    
+    public override func stopLoadingAnimation() {
+        super.stopLoadingAnimation()
+        self.setTitle(title, for: .normal)
     }
     
     func getGradientLayer() -> CAGradientLayer {
@@ -58,6 +67,7 @@ public class LoadingGradientButton: LoadingButton {
     func getMaskLayer() -> CAShapeLayer {
         let text = "Loading"
         let image = UIGraphicsImageRenderer(size: bounds.size).image { (_) in
+            // Used for animating text with a gradient
             text.draw(in: bounds, withAttributes: textAttributes)
         }
         
@@ -65,7 +75,7 @@ public class LoadingGradientButton: LoadingButton {
         maskLayer.backgroundColor = UIColor.clear.cgColor
         maskLayer.frame = self.bounds.offsetBy(dx: bounds.size.width, dy: 0)
         maskLayer.path = UIBezierPath(rect: self.bounds.inset(by: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))).cgPath
-        //maskLayer.contents = image.cgImage
+        maskLayer.contents = image.cgImage
         return maskLayer
     }
     

@@ -53,7 +53,7 @@ public class LoadingCircularButton: LoadingButton {
         let width = self.frame.size.width
         let height = self.frame.size.height
         let circleWidth = self.frame.size.width - labelEnd
-        let offset: CGFloat = 5.0
+        let offset: CGFloat = 10.0
         let radius: CGFloat
         
         if circleWidth < height {

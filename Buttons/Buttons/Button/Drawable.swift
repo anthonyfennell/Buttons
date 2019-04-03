@@ -23,12 +23,7 @@ extension Drawable {
     }
     
     func drawNormalImageIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
-        if config.shadowed {
-            let shadowRect = getShadowRect(bounds: bounds)
-            drawShadowGradientIn(context: context, bounds: bounds, config: config)
-            //drawShadowImageIn(context: context, bounds: shadowRect, borderWidth: borderWidth, cornerRadius: cornerRadius)
-        }
-        let rect = config.shadowed ? getRect(bounds: bounds) : bounds
+        let rect = bounds
         drawButtonIn(context: context, bounds: rect, config: config)
     }
     
@@ -41,55 +36,40 @@ extension Drawable {
     }
     
     func drawHighlightedImageIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
-        let rect = config.shadowed ? getRect(bounds: bounds) : bounds
-//        if shadowed {
-//            rect = getShadowRect(bounds: bounds)
-//        }
+        let rect = bounds
         drawButtonIn(context: context, bounds: rect, config: config)
     }
 
     // MARK: - Draw Background
-    func drawShadowImageIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
-        context.setStrokeColor(UIColor(hex: 0xD0D0D0).cgColor)
-        context.setLineWidth(config.borderWidth)
-        context.setFillColor(UIColor(hex: 0xD0D0D0).cgColor)
-        context.beginPath()
-        context.addPath(getPath(bounds: bounds, borderWidth: config.borderWidth, cornerRadius: config.cornerRadius).cgPath)
-        context.drawPath(using: .fillStroke)
-    }
-    
     func drawButtonIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
         context.setStrokeColor(config.borderColor.cgColor)
         context.setLineWidth(config.borderWidth)
-        context.setFillColor(config.backgroundColor.cgColor)
+        let fillColor = config.isBackgroundGradient ? UIColor.clear.cgColor : config.backgroundColor.cgColor
+        context.setFillColor(fillColor)
+        
         context.beginPath()
-        context.addPath(getPath(bounds: bounds, borderWidth: config.borderWidth, cornerRadius: config.cornerRadius).cgPath)
+        let path = getPath(bounds: bounds, borderWidth: config.borderWidth, cornerRadius: config.cornerRadius)
+        path.addClip()
+        context.addPath(path.cgPath)
         context.closePath()
+        
         if config.isBackgroundFilled {
             context.drawPath(using: .fillStroke)
         } else {
             context.drawPath(using: .stroke)
         }
-    }
-    
-    func drawShadowGradientIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
-        let path = getPath(bounds: bounds, borderWidth: config.borderWidth, cornerRadius: config.cornerRadius)
-        context.saveGState()
-        path.addClip()
-        let colors = [UIColor(hex: 0xF0F0F0).cgColor, UIColor(hex: 0xD0D0D0).cgColor]
-        guard let gradient = CGGradient(colorsSpace: nil, colors: colors as CFArray, locations: nil) else { return }
-        context.drawLinearGradient(gradient, start: bounds.origin, end: CGPoint(x: bounds.maxX, y: bounds.maxY), options: [])
-        context.restoreGState()
-    }
-    
-    // MARK: - Draw String
-    func drawTitleIn(context: CGContext, text: String, bounds: CGRect, fontSize: CGFloat, color: UIColor) {
-        let nsString = text as NSString
-        let attributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: color,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)
-        ]
-        nsString.draw(in: bounds, withAttributes: attributes)
+        
+        if config.isBackgroundGradient {
+            let lightColor = config.backgroundColor.withAlphaComponent(0.5).cgColor
+            let darkColor = config.backgroundColor.cgColor
+            let colors = [lightColor, darkColor, darkColor, darkColor, lightColor]
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let locations: [CGFloat] = [0.0, 0.4, 0.5, 0.6, 1.0]
+            let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!
+            let startPoint = CGPoint.zero
+            let endPoint = CGPoint(x: 0, y: bounds.height)
+            context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
+        }
     }
     
     // MARK: - Helpers
@@ -102,22 +82,6 @@ extension Drawable {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
-    }
-    
-    func getRect(bounds: CGRect) -> CGRect {
-        //let offsetX: CGFloat = 4
-        //let offsetY: CGFloat = 4
-        //let slice = bounds.divided(atDistance: offsetX, from: .minXEdge).remainder
-        //return slice.divided(atDistance: offsetY, from: .maxYEdge).remainder
-        return bounds.inset(by: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-    }
-    
-    func getShadowRect(bounds: CGRect) -> CGRect {
-        //let offsetX: CGFloat = 4
-        //let offsetY: CGFloat = 4
-        //let slice = bounds.divided(atDistance: offsetY, from: .minYEdge).remainder
-        //return slice.divided(atDistance: offsetX, from: .maxXEdge).remainder
-        return bounds
     }
     
 }

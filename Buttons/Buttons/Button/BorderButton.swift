@@ -18,7 +18,7 @@ public class BorderButton: DefaultButton {
     override func configureTitleColors() {
         setTitleColor(self.borderColor, for: .normal)
         setTitleColor(self.borderColor, for: .highlighted)
-        setTitleColor(UIColor.lightGray, for: .disabled)
+        setTitleColor(self.disabledColor, for: .disabled)
     }
 }
 

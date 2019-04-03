@@ -12,8 +12,9 @@ struct ButtonConfig {
     let size: CGSize
     let borderWidth: CGFloat
     let cornerRadius: CGFloat
-    let shadowed: Bool
+    let isShadowed: Bool
     let isBackgroundFilled: Bool
+    let isBackgroundGradient: Bool
     let borderColor: UIColor
     let backgroundColor: UIColor
 }

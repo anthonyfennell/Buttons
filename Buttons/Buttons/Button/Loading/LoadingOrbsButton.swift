@@ -71,13 +71,7 @@ public class LoadingOrbsButton: LoadingButton {
         
         animateToRight(layer: left, delay: delay)
         animateToRight(layer: middle, delay: delay)
-        
-        let randomChoice = Int.random(in: 0...1)
-        if randomChoice == 0 {
-            animateUpAndAround(layer: right, delay: delay)
-        } else {
-            animateDownAndAround(layer: right, delay: delay)
-        }
+        animateDownAndAround(layer: right, delay: delay)
     }
     
     func animateToRight(layer: CAShapeLayer, delay: TimeInterval) {
@@ -90,7 +84,7 @@ public class LoadingOrbsButton: LoadingButton {
         layer.add(animation, forKey: nil)
     }
     
-    func animateUpAndAround(layer: CAShapeLayer, delay: TimeInterval) {
+    func animateDownAndAround(layer: CAShapeLayer, delay: TimeInterval) {
         let path = UIBezierPath()
         let x = layer.frame.origin.x
         let y = layer.frame.origin.y
@@ -102,7 +96,7 @@ public class LoadingOrbsButton: LoadingButton {
         animateRight(layer: layer, delay: delay, path: path.cgPath)
     }
     
-    func animateDownAndAround(layer: CAShapeLayer, delay: TimeInterval) {
+    func animateUpAndAround(layer: CAShapeLayer, delay: TimeInterval) {
         let path = UIBezierPath()
         let x = layer.frame.origin.x
         let y = layer.frame.origin.y

@@ -9,49 +9,56 @@
 import UIKit
 
 public class DefaultButton: UIButton, CAAnimationDelegate {
-    @IBInspectable public var borderWidth: CGFloat = 2.0 {
+    
+    public var buttonColor: UIColor = ColorHex.orange3.color {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var buttonColor: UIColor = ColorHex.orange3.color {
+    public var borderColor: UIColor = ColorHex.orange5.color {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var borderColor: UIColor = ColorHex.orange5.color {
+    public var highlightColor: UIColor = ColorHex.orange5.color {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var highlightColor: UIColor = ColorHex.orange5.color {
+    public var disabledColor: UIColor = ColorHex.orange3.color.withAlphaComponent(0.35) {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var disabledColor: UIColor = ColorHex.orange3.color.withAlphaComponent(0.35) {
+    public var isShadowed: Bool = false {
+        didSet {
+            updateShadowLayer()
+        }
+    }
+    
+    public var isBackgroundFilled: Bool = true {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var shadowed: Bool = false {
+    public var isBackgroundGradient: Bool = false {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var isBackgroundFilled: Bool = true {
+    public var cornerRadius: CGFloat = 0 {
         didSet {
             setNeedsBackgroundRedraw()
         }
     }
     
-    @IBInspectable public var cornerRadius: CGFloat = 0 {
+    public var borderWidth: CGFloat = 2.0 {
         didSet {
             setNeedsBackgroundRedraw()
         }
@@ -79,7 +86,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
     public func configure() {
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.white, for: .highlighted)
-        setTitleColor(UIColor.lightGray, for: .disabled)
+        setTitleColor(UIColor.white, for: .disabled)
         self.addTarget(self, action: #selector(animateTouch), for: .touchUpInside)
     }
     
@@ -87,6 +94,18 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         lastImageSize = CGSize.zero
         setNeedsLayout()
         configureTitleColors()
+    }
+    
+    func updateShadowLayer() {
+        if self.isShadowed {
+            self.layer.shadowPath = self.drawable.getPath(bounds: self.bounds, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius).cgPath
+            self.layer.shadowOpacity = 0.6 // Higher the value harder to see the shadow
+            self.layer.shadowColor = self.buttonColor.cgColor
+            self.layer.shadowRadius = 3.0 // The higher the value the more blur
+            self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0) // Offset in points. Sending to bottom right corner
+        } else {
+            self.layer.shadowPath = nil
+        }
     }
     
     // MARK: - Draw Image
@@ -143,6 +162,8 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         case .highlighted:
             borderColor = self.borderColor
             backgroundColor = self.highlightColor
+            // isBackgroundFilled is true here in order to fill the background
+            // for highlighted BorderButtons
             isBackgroundFilled = true
         case .disabled:
             borderColor = self.borderColor.withAlphaComponent(0.35)
@@ -158,18 +179,21 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         let config = ButtonConfig(size: size,
                                   borderWidth: self.borderWidth,
                                   cornerRadius: self.cornerRadius,
-                                  shadowed: self.shadowed,
+                                  isShadowed: self.isShadowed,
                                   isBackgroundFilled: isBackgroundFilled,
+                                  isBackgroundGradient: self.isBackgroundGradient,
                                   borderColor: borderColor,
                                   backgroundColor: backgroundColor)
         return config
     }
     
+    // MARK: - Tappable Point
     public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let path = self.drawable.getPath(bounds: self.bounds, borderWidth: borderWidth, cornerRadius: cornerRadius)
         return path.contains(point) && super.point(inside: point, with: event)
     }
     
+    // MARK: - Touch Animation
     @objc public func animateTouch() {
         let bounce = CASpringAnimation(keyPath: "transform.scale")
         bounce.fromValue = 0.85
@@ -186,13 +210,15 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
     
     // MARK: - Animation Delegate
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        // Could remove this if not using bounce stop method
         if let value = anim.value(forKey: "animation") as? String, value == "bounce" {
             self.bounceAnimationDidStop()
         }
     }
     
     public func bounceAnimationDidStop() {
-        
+        // When overriding and adding a loading animation here,
+        // the animation doesn't quite start right after the bounce
     }
 }
 

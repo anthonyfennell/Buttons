@@ -6,13 +6,6 @@
 //  Copyright © 2019 Anthony Fennell. All rights reserved.
 //
 
-
-// Idea here is that after the button is selected,
-// then a loading animation starts
-
-// 1. Could be a constent line rotating around the border
-// 2. Could turn into a circle loading indicator (designed by me)
-
 import UIKit
 
 public class LoadingButton: DefaultButton {
@@ -25,7 +18,9 @@ public class LoadingButton: DefaultButton {
     }
     
     public func animateLoading() {
-        
+        // Override with loading animation
+        // Add animation layers to `animationLayers` to be removed
+        // on finish
     }
     
     public func stopLoadingAnimation() {
