@@ -29,6 +29,7 @@
 		8F51D2D92250398C00FD33EF /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F51D2D72250398C00FD33EF /* UIColor+Utils.swift */; };
 		8F51D2DA2250398C00FD33EF /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F51D2D82250398C00FD33EF /* ColorHex.swift */; };
 		8F51D3402251B88D00FD33EF /* LoadingCircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F51D33F2251B88D00FD33EF /* LoadingCircularButton.swift */; };
+		8F8E4A54225694BD00F2663F /* LoadingHopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8E4A53225694BD00F2663F /* LoadingHopButton.swift */; };
 		8FD1F3552252BBEC00913427 /* LoadingEdgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1F3542252BBEC00913427 /* LoadingEdgeButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		8F51D2D72250398C00FD33EF /* UIColor+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		8F51D2D82250398C00FD33EF /* ColorHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		8F51D33F2251B88D00FD33EF /* LoadingCircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircularButton.swift; sourceTree = "<group>"; };
+		8F8E4A53225694BD00F2663F /* LoadingHopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHopButton.swift; sourceTree = "<group>"; };
 		8FD1F3542252BBEC00913427 /* LoadingEdgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingEdgeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				8F51D33F2251B88D00FD33EF /* LoadingCircularButton.swift */,
 				8FD1F3542252BBEC00913427 /* LoadingEdgeButton.swift */,
 				8F4FED5E2253EA4800D15A2B /* LoadingOrbsButton.swift */,
+				8F8E4A53225694BD00F2663F /* LoadingHopButton.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				8F51D2CD2250389100FD33EF /* DefaultButton.swift in Sources */,
 				8F51D2C42250389100FD33EF /* LoadingGradientButton.swift in Sources */,
 				8F51D2CA2250389100FD33EF /* Drawable.swift in Sources */,
+				8F8E4A54225694BD00F2663F /* LoadingHopButton.swift in Sources */,
 				8F51D2C72250389100FD33EF /* OvalLeftButton.swift in Sources */,
 				8F51D2C32250389100FD33EF /* SlidingEdgesButton.swift in Sources */,
 				8F4FED5F2253EA4800D15A2B /* LoadingOrbsButton.swift in Sources */,

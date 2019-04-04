@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Msb-97-eVu" userLabel="Vertical Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="891"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="950"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wMt-a7-JSW" userLabel="Loading Stack">
                                                 <rect key="frame" x="5" y="15" width="365" height="44"/>
@@ -205,8 +205,25 @@
                                                     <constraint firstAttribute="height" constant="44" id="JDy-0m-zuf"/>
                                                 </constraints>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cER-3F-mYq" userLabel="Loading Hop Stack">
+                                                <rect key="frame" x="5" y="554" width="365" height="44"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBV-7s-s8n" customClass="LoadingHopButton" customModule="Buttons">
+                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
+                                                        <state key="normal" title="Loading Hop">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVL-k7-Yaf"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="0mH-Rj-uAC"/>
+                                                </constraints>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9mG-3J-fWe" userLabel="Details Stack">
-                                                <rect key="frame" x="5" y="554" width="365" height="322"/>
+                                                <rect key="frame" x="5" y="613" width="365" height="322"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MWf-EW-iD0">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="18"/>
@@ -443,6 +460,7 @@
                         <outlet property="loadingCircularButton" destination="MNF-J8-FzD" id="gHp-mm-F8i"/>
                         <outlet property="loadingEdgeButton" destination="Vjf-hB-pue" id="EVt-Ph-dMB"/>
                         <outlet property="loadingGradientButton1" destination="OEe-JJ-FF4" id="l1c-yK-PaW"/>
+                        <outlet property="loadingHopButton" destination="DBV-7s-s8n" id="J5O-RG-Bqj"/>
                         <outlet property="loadingOrbsButton" destination="HOr-D3-W8B" id="Ttu-Ge-nkR"/>
                         <outlet property="ovalLeftButton" destination="VWb-GR-jDT" id="Jvq-CT-CVH"/>
                         <outlet property="ovalRightButton" destination="AuS-Xn-7NV" id="S1E-Fw-0g0"/>

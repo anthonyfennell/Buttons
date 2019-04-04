@@ -51,6 +51,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var shadowedLabel: UILabel!
     @IBOutlet weak var backgroundGradientLabel: UILabel!
     @IBOutlet weak var isDisabledLabel: UILabel!
+    @IBOutlet weak var loadingHopButton: LoadingHopButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -73,6 +74,7 @@ class ViewController: UIViewController {
         colorYellow(button: self.borderButton2)
         colorGreen(button: self.disabledButton)
         colorOrange(button: self.disabledBorderButton)
+        colorGreen(button: self.loadingHopButton)
         
         self.borderButton1.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         self.borderButton2.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
