@@ -49,6 +49,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var cornerRadiusLabel: UILabel!
     @IBOutlet weak var borderWidthLabel: UILabel!
     @IBOutlet weak var shadowedLabel: UILabel!
+    @IBOutlet weak var backgroundGradientLabel: UILabel!
+    @IBOutlet weak var isDisabledLabel: UILabel!
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -76,7 +79,7 @@ class ViewController: UIViewController {
         self.borderButton1.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         self.borderButton2.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         
-        self.button2.isBackgroundGradient = true
+        self.button2.enableGradient = true
         self.button1.isShadowed = true
         
         self.button1.borderWidth = 4.0
@@ -146,6 +149,8 @@ class ViewController: UIViewController {
         self.cornerRadiusLabel.text = String(format: "%.2f", button.cornerRadius)
         self.borderWidthLabel.text = String(format: "%.1f", button.borderWidth)
         self.shadowedLabel.text = button.isShadowed ? "true" : "false"
+        self.backgroundGradientLabel.text = button.enableGradient ? "true" : "false"
+        self.isDisabledLabel.text = button.isEnabled ? "true" : "false"
     }
     
     // MARK: - Random colors

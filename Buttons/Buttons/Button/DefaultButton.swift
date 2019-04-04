@@ -46,7 +46,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         }
     }
     
-    public var isBackgroundGradient: Bool = false {
+    public var enableGradient: Bool = false {
         didSet {
             setNeedsBackgroundRedraw()
         }
@@ -181,7 +181,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
                                   cornerRadius: self.cornerRadius,
                                   isShadowed: self.isShadowed,
                                   isBackgroundFilled: isBackgroundFilled,
-                                  isBackgroundGradient: self.isBackgroundGradient,
+                                  isBackgroundGradient: self.enableGradient,
                                   borderColor: borderColor,
                                   backgroundColor: backgroundColor)
         return config
