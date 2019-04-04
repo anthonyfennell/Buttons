@@ -14,7 +14,7 @@ struct ButtonConfig {
     let cornerRadius: CGFloat
     let isShadowed: Bool
     let isBackgroundFilled: Bool
-    let isBackgroundGradient: Bool
+    let isGradientEnabled: Bool
     let borderColor: UIColor
     let backgroundColor: UIColor
 }

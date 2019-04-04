@@ -44,7 +44,7 @@ extension Drawable {
     func drawButtonIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
         context.setStrokeColor(config.borderColor.cgColor)
         context.setLineWidth(config.borderWidth)
-        let fillColor = config.isBackgroundGradient ? UIColor.clear.cgColor : config.backgroundColor.cgColor
+        let fillColor = config.isGradientEnabled ? UIColor.clear.cgColor : config.backgroundColor.cgColor
         context.setFillColor(fillColor)
         
         context.beginPath()
@@ -59,7 +59,7 @@ extension Drawable {
             context.drawPath(using: .stroke)
         }
         
-        if config.isBackgroundGradient {
+        if config.isGradientEnabled {
             let lightColor = config.backgroundColor.withAlphaComponent(0.5).cgColor
             let darkColor = config.backgroundColor.cgColor
             let colors = [lightColor, darkColor, darkColor, darkColor, lightColor]

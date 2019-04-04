@@ -46,7 +46,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         }
     }
     
-    public var enableGradient: Bool = false {
+    public var isGradientEnabled: Bool = false {
         didSet {
             setNeedsBackgroundRedraw()
         }
@@ -64,6 +64,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         }
     }
     
+    public var isHapticEnabled: Bool = true
     var drawable: Drawable = ButtonDrawable()
     private var lastImageSize: CGSize = CGSize.zero
     
@@ -181,7 +182,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
                                   cornerRadius: self.cornerRadius,
                                   isShadowed: self.isShadowed,
                                   isBackgroundFilled: isBackgroundFilled,
-                                  isBackgroundGradient: self.enableGradient,
+                                  isGradientEnabled: self.isGradientEnabled,
                                   borderColor: borderColor,
                                   backgroundColor: backgroundColor)
         return config
@@ -195,6 +196,11 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
     
     // MARK: - Touch Animation
     @objc public func animateTouch() {
+        if self.isHapticEnabled {
+            let impact = UIImpactFeedbackGenerator()
+            impact.impactOccurred()
+        }
+        
         let bounce = CASpringAnimation(keyPath: "transform.scale")
         bounce.fromValue = 0.85
         bounce.toValue = 1.0

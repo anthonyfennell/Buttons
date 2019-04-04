@@ -52,9 +52,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundGradientLabel: UILabel!
     @IBOutlet weak var isDisabledLabel: UILabel!
     
-    
     @IBOutlet weak var scrollView: UIScrollView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +77,7 @@ class ViewController: UIViewController {
         self.borderButton1.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         self.borderButton2.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         
-        self.button2.enableGradient = true
+        self.button2.isGradientEnabled = true
         self.button1.isShadowed = true
         
         self.button1.borderWidth = 4.0
@@ -95,7 +93,7 @@ class ViewController: UIViewController {
         self.disabledButton.isEnabled = false
         self.disabledBorderButton.isEnabled = false
         
-        // Adding button programatically
+        // Example of adding button programatically
         let circleButton = CircleButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         colorBlue(button: circleButton)
         self.ovalStackView.addArrangedSubview(circleButton)
@@ -106,7 +104,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loadingButtonAction(_ sender: LoadingButton) {
-        // Simulate the stop of loading
+        // Simulate the loading stopped
         Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false) { (_) in
             sender.stopLoadingAnimation()
         }
@@ -149,7 +147,7 @@ class ViewController: UIViewController {
         self.cornerRadiusLabel.text = String(format: "%.2f", button.cornerRadius)
         self.borderWidthLabel.text = String(format: "%.1f", button.borderWidth)
         self.shadowedLabel.text = button.isShadowed ? "true" : "false"
-        self.backgroundGradientLabel.text = button.enableGradient ? "true" : "false"
+        self.backgroundGradientLabel.text = button.isGradientEnabled ? "true" : "false"
         self.isDisabledLabel.text = button.isEnabled ? "true" : "false"
     }
     
