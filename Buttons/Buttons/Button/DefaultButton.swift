@@ -64,11 +64,12 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         }
     }
     
-    public var isHapticEnabled: Bool = true
+    public var isHapticEnabled: Bool = false
     var drawable: Drawable = ButtonDrawable()
     private var lastImageSize: CGSize = CGSize.zero
     
-    // MARK: - Setup
+    
+    // MARK: - Initializers
     public override func awakeFromNib() {
         super.awakeFromNib()
         configure()
@@ -85,16 +86,25 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
     }
     
     public func configure() {
-        setTitleColor(UIColor.white, for: .normal)
-        setTitleColor(UIColor.white, for: .highlighted)
-        setTitleColor(UIColor.white, for: .disabled)
-        self.addTarget(self, action: #selector(animateTouch), for: .touchUpInside)
+        updateTitleColor()
+        self.addTarget(self, action: #selector(touchUpInsideEvent), for: .touchUpInside)
+        self.addTarget(self, action: #selector(animateScaleDown), for: .touchDown)
+        self.addTarget(self, action: #selector(animateScaleDown), for: .touchDragEnter)
+        self.addTarget(self, action: #selector(animateToIdentity), for: .touchCancel)
+        self.addTarget(self, action: #selector(animateToIdentity), for: .touchDragExit)
     }
     
+    // MARK: - Redraw Images
     func setNeedsBackgroundRedraw() {
         lastImageSize = CGSize.zero
         setNeedsLayout()
-        configureTitleColors()
+        updateTitleColor()
+    }
+    
+    public func updateTitleColor() {
+        setTitleColor(UIColor.white, for: .normal)
+        setTitleColor(UIColor.white, for: .highlighted)
+        setTitleColor(UIColor.white, for: .disabled)
     }
     
     func updateShadowLayer() {
@@ -102,7 +112,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
             self.layer.shadowPath = self.drawable.getPath(bounds: self.bounds, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius).cgPath
             self.layer.shadowOpacity = 0.6 // Higher the value harder to see the shadow
             self.layer.shadowColor = self.buttonColor.cgColor
-            self.layer.shadowRadius = 3.0 // The higher the value the more blur
+            self.layer.shadowRadius = 3.0 // Higher the value the more blur
             self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0) // Offset in points. Sending to bottom right corner
         } else {
             self.layer.shadowPath = nil
@@ -115,19 +125,15 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         redrawImagesIfNeeded()
     }
     
-    func configureTitleColors() {
-        
-    }
-    
     func redrawImagesIfNeeded() {
         let currentSize: CGSize = bounds.size
         if lastImageSize.width != currentSize.width || lastImageSize.height != currentSize.height {
             lastImageSize = currentSize
-            redrawImages()
+            updateBackgroundImages()
         }
     }
     
-    func redrawImages() {
+    func updateBackgroundImages() {
         let normalImage = getNormalImage(size: lastImageSize)
         let highlightedImage = getHighlightedImage(size: lastImageSize)
         let disabledImage = getDisabledImage(size: lastImageSize)
@@ -136,6 +142,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         setBackgroundImage(disabledImage, for: .disabled)
     }
     
+    // MARK: - Image types
     func getNormalImage(size: CGSize) -> UIImage {
         let config = getButtonConfig(for: .normal, size: size)
         return drawable.buttonNormalImage(with: config)
@@ -151,6 +158,7 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         return drawable.buttonNormalImage(with: config)
     }
     
+    // MARK: - Button Config
     func getButtonConfig(for state: UIControl.State, size: CGSize) -> ButtonConfig {
         let borderColor: UIColor
         let backgroundColor: UIColor
@@ -194,13 +202,15 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         return path.contains(point) && super.point(inside: point, with: event)
     }
     
-    // MARK: - Touch Animation
-    @objc public func animateTouch() {
+    // MARK: - Touch Animations
+    @objc
+    public func touchUpInsideEvent() {
         if self.isHapticEnabled {
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
         }
         
+        self.transform = .identity
         let bounce = CASpringAnimation(keyPath: "transform.scale")
         bounce.fromValue = 0.85
         bounce.toValue = 1.0
@@ -214,15 +224,31 @@ public class DefaultButton: UIButton, CAAnimationDelegate {
         self.layer.add(bounce, forKey: nil)
     }
     
-    // MARK: - Animation Delegate
+    @objc
+    public func animateScaleDown() {
+        let animator = UIViewPropertyAnimator(duration: 0.15, curve: .linear) {
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+        animator.startAnimation()
+    }
+    
+    @objc
+    public func animateToIdentity() {
+        let animator = UIViewPropertyAnimator(duration: 0.15, curve: .linear) {
+            self.transform = .identity
+        }
+        animator.startAnimation()
+    }
+    
+    // MARK: - CAAnimationDelegate
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        // Could remove this if not using bounce stop method
         if let value = anim.value(forKey: "animation") as? String, value == "bounce" {
-            self.bounceAnimationDidStop()
+            self.touchUpInsideAnimationDidEnd()
         }
     }
     
-    public func bounceAnimationDidStop() {
+    public func touchUpInsideAnimationDidEnd() {
+        // Could remove this if we will not override
         // When overriding and adding a loading animation here,
         // the animation doesn't quite start right after the bounce
     }

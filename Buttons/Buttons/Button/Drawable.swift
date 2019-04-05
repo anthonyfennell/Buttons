@@ -14,7 +14,7 @@ protocol Drawable {
 
 extension Drawable {
     
-    // MARK: - Draw Normal Image
+    // MARK: - Normal Image
     func buttonNormalImage(with config: ButtonConfig) -> UIImage {
         let context = beginImageContext(size: config.size)
         let bounds = CGRect(origin: CGPoint.zero, size: config.size)
@@ -27,7 +27,7 @@ extension Drawable {
         drawButtonIn(context: context, bounds: rect, config: config)
     }
     
-    // MARK: - Draw Highlighted Image
+    // MARK: - Highlighted Image
     func buttonHighlightedImage(with config: ButtonConfig) -> UIImage {
         let context = beginImageContext(size: config.size)
         let bounds = CGRect(origin: CGPoint.zero, size: config.size)
@@ -40,7 +40,7 @@ extension Drawable {
         drawButtonIn(context: context, bounds: rect, config: config)
     }
 
-    // MARK: - Draw Background
+    // MARK: - Draw Content
     func drawButtonIn(context: CGContext, bounds: CGRect, config: ButtonConfig) {
         context.setStrokeColor(config.borderColor.cgColor)
         context.setLineWidth(config.borderWidth)
@@ -72,7 +72,7 @@ extension Drawable {
         }
     }
     
-    // MARK: - Helpers
+    // MARK: - Begin + End Context
     func beginImageContext(size: CGSize) -> CGContext {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         return UIGraphicsGetCurrentContext()!

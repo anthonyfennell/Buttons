@@ -11,8 +11,8 @@ import UIKit
 public class LoadingButton: DefaultButton {
     public var animationLayers: [CALayer] = []
     
-    public override func animateTouch() {
-        super.animateTouch()
+    public override func touchUpInsideEvent() {
+        super.touchUpInsideEvent()
         self.isEnabled = false
         animateLoading()
     }

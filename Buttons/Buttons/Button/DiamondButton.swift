@@ -14,8 +14,8 @@ public class DiamondButton: DefaultButton {
         self.drawable = DiamondButtonDrawable()
     }
     
-    public override func animateTouch() {
-        super.animateTouch()
+    public override func touchUpInsideEvent() {
+        super.touchUpInsideEvent()
         
         let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.duration = 0.22

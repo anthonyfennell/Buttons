@@ -11,8 +11,8 @@ import Foundation
 public class LoadingEdgeButton: LoadingButton {
     private var animating: Bool = false
     
-    public override func animateTouch() {
-        super.animateTouch()
+    public override func touchUpInsideEvent() {
+        super.touchUpInsideEvent()
         self.animating = true
     }
     
