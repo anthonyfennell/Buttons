@@ -59,17 +59,32 @@ extension Drawable {
             context.drawPath(using: .stroke)
         }
         
+        // Gradient from middle fading outwards
+//        if config.isGradientEnabled {
+//            let lightColor = config.backgroundColor.withAlphaComponent(0.5).cgColor
+//            let darkColor = config.backgroundColor.cgColor
+//            let colors = [lightColor, darkColor, darkColor, darkColor, lightColor]
+//            let colorSpace = CGColorSpaceCreateDeviceRGB()
+//            let locations: [CGFloat] = [0.0, 0.4, 0.5, 0.6, 1.0]
+//            let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!
+//            let startPoint = CGPoint.zero
+//            let endPoint = CGPoint(x: 0, y: bounds.height)
+//            context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
+//        }
+        
+        // Gradient from left to right - hardcoded colors
         if config.isGradientEnabled {
-            let lightColor = config.backgroundColor.withAlphaComponent(0.5).cgColor
-            let darkColor = config.backgroundColor.cgColor
-            let colors = [lightColor, darkColor, darkColor, darkColor, lightColor]
+            let lightColor = ColorHex.red4.color.cgColor
+            let darkColor = ColorHex.orange4.color.cgColor
+            let colors = [lightColor, darkColor]
             let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let locations: [CGFloat] = [0.0, 0.4, 0.5, 0.6, 1.0]
+            let locations: [CGFloat] = [0.0, 1.0]
             let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!
-            let startPoint = CGPoint.zero
-            let endPoint = CGPoint(x: 0, y: bounds.height)
+            let startPoint = CGPoint(x: 0, y: bounds.height / 2)
+            let endPoint = CGPoint(x: bounds.width, y: bounds.height / 2)
             context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
         }
+        
     }
     
     // MARK: - Begin + End Context

@@ -18,10 +18,10 @@ public class SlidingEdgesButton: DefaultButton {
 struct SlidingEdgeButtonDrawable: Drawable {
     func getPath(bounds: CGRect, borderWidth: CGFloat, cornerRadius: CGFloat) -> UIBezierPath {
         let path = UIBezierPath()
-        let left = bounds.minX + borderWidth / 2
-        let right = bounds.maxX - borderWidth / 2
-        let top = bounds.minY + borderWidth / 2
-        let bottom = bounds.maxY - borderWidth / 2
+        let left = bounds.minX
+        let right = bounds.maxX
+        let top = bounds.minY
+        let bottom = bounds.maxY
         let edgeOffset = bounds.maxX > bounds.maxY ? bounds.maxY * 0.15 : bounds.maxX * 0.15
         path.lineWidth = borderWidth
         

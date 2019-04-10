@@ -39,47 +39,20 @@ public class LoadingFillButton: LoadingButton {
         self.layer.addSublayer(layer)
         self.animationLayers.append(layer)
         
-        let animationDuration: CFTimeInterval = 0.6
+        let animationDuration: CFTimeInterval = 2.0
         let width: CGFloat = self.bounds.width
         var rect = self.bounds.divided(atDistance: self.cornerRadius * 2, from: .minXEdge).slice
         let pathPre = self.drawable.getPath(bounds: rect, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius)
         rect = self.bounds.divided(atDistance: width / 4, from: .minXEdge).slice
-        let pathLow = self.drawable.getPath(bounds: rect, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius)
-        let arcAnimationPre: CABasicAnimation = CABasicAnimation(keyPath: "path")
-        arcAnimationPre.fromValue = pathPre.cgPath
-        arcAnimationPre.toValue = pathLow.cgPath
-        arcAnimationPre.duration = animationDuration
-        
-        rect = self.bounds.divided(atDistance: width * 2 / 4, from: .minXEdge).slice
-        let pathMid = self.drawable.getPath(bounds: rect, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius)
-        let arcAnimationMid: CABasicAnimation = CABasicAnimation(keyPath: "path")
-        arcAnimationMid.fromValue = pathLow.cgPath
-        arcAnimationMid.toValue = pathMid.cgPath
-        arcAnimationMid.beginTime = arcAnimationPre.beginTime + arcAnimationPre.duration
-        arcAnimationMid.duration = animationDuration
-        
-        rect = self.bounds.divided(atDistance: width * 3 / 4, from: .minXEdge).slice
-        let pathHigh = self.drawable.getPath(bounds: rect, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius)
-        let arcAnimationHigh: CABasicAnimation = CABasicAnimation(keyPath: "path")
-        arcAnimationHigh.fromValue = pathMid.cgPath
-        arcAnimationHigh.toValue = pathHigh.cgPath
-        arcAnimationHigh.beginTime = arcAnimationMid.beginTime + arcAnimationMid.duration
-        arcAnimationHigh.duration = animationDuration
         
         let pathComplete = self.drawable.getPath(bounds: self.bounds, borderWidth: self.borderWidth, cornerRadius: self.cornerRadius)
         let arcAnimationComplete: CABasicAnimation = CABasicAnimation(keyPath: "path")
-        arcAnimationComplete.fromValue = pathHigh.cgPath
+        arcAnimationComplete.fromValue = pathPre.cgPath
         arcAnimationComplete.toValue = pathComplete.cgPath
-        arcAnimationComplete.beginTime = arcAnimationHigh.beginTime + arcAnimationHigh.duration
         arcAnimationComplete.duration = animationDuration
-        
-        let arcAnimationGroup: CAAnimationGroup = CAAnimationGroup()
-        arcAnimationGroup.animations = [arcAnimationPre, arcAnimationMid, arcAnimationHigh, arcAnimationComplete]
-        arcAnimationGroup.duration = arcAnimationComplete.beginTime + arcAnimationComplete.duration
-        arcAnimationGroup.fillMode = CAMediaTimingFillMode.forwards
-        arcAnimationGroup.repeatCount = .infinity
-        
-        layer.add(arcAnimationGroup, forKey: nil)
+        arcAnimationComplete.fillMode = .forwards
+        arcAnimationComplete.repeatCount = .infinity
+        layer.add(arcAnimationComplete, forKey: nil)
     }
     
     func getPrePath() -> UIBezierPath {

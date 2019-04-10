@@ -105,10 +105,10 @@
 			isa = PBXGroup;
 			children = (
 				8FD1F3562252BBF500913427 /* Loading */,
-				8F51D2B52250389100FD33EF /* OvalRightButton.swift */,
 				8F51D2B62250389100FD33EF /* SlidingEdgesButton.swift */,
 				8F51D2B82250389100FD33EF /* WovelButton.swift */,
 				8F51D2B92250389100FD33EF /* DiamondButton.swift */,
+				8F51D2B52250389100FD33EF /* OvalRightButton.swift */,
 				8F51D2BA2250389100FD33EF /* OvalLeftButton.swift */,
 				8F51D2BB2250389100FD33EF /* CircleButton.swift */,
 				8F51D2BC2250389100FD33EF /* TriangleButton.swift */,

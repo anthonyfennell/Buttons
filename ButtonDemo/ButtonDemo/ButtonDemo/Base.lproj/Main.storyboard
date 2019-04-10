@@ -21,209 +21,341 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xka-HR-6yU">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Msb-97-eVu" userLabel="Vertical Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="950"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Msb-97-eVu" userLabel="Vertical Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wMt-a7-JSW" userLabel="Loading Stack">
-                                                <rect key="frame" x="5" y="15" width="365" height="44"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYg-PC-Owv" customClass="DefaultButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
-                                                        <state key="normal" title="Button">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuO-Zg-rP4" userLabel="Loading" customClass="LoadingFillButton" customModule="Buttons">
-                                                        <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
-                                                        <state key="normal" title="Load Fill">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xgj-oE-eh4"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEe-JJ-FF4" customClass="LoadingGradientButton" customModule="Buttons">
-                                                        <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <state key="normal" title="Load Gradient">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4L-sK-1TM"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjQ-ho-bhD" customClass="DefaultButton" customModule="Buttons">
+                                                <rect key="frame" x="5" y="15" width="365" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="6a1-O5-Rwx"/>
+                                                    <constraint firstAttribute="height" constant="26" id="YKD-DY-5zZ"/>
                                                 </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zo8-ag-TIo" userLabel="Border Stack">
-                                                <rect key="frame" x="5" y="74" width="365" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Hide">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="hideButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V1h-sB-sdh"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aFh-s6-QBq" userLabel="Basic Stack">
+                                                <rect key="frame" x="5" y="51" width="365" height="260"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABm-8z-D4L" customClass="BorderButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
-                                                        <state key="normal" title="Border">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qiq-A8-WIC" customClass="DefaultButton" customModule="Buttons">
-                                                        <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
-                                                        <state key="normal" title="Corner">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8z-AM-Zwv" customClass="SlidingEdgesButton" customModule="Buttons">
-                                                        <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
-                                                        <state key="normal" title="Edge">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="11e-Pk-f4F"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Flv-m4-liP" userLabel="Oval Stack">
-                                                <rect key="frame" x="5" y="133" width="365" height="75"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuS-Xn-7NV" userLabel="Oval Right Button" customClass="OvalRightButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="75"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWb-GR-jDT" userLabel="Oval Left Button" customClass="OvalLeftButton" customModule="Buttons">
-                                                        <rect key="frame" x="192.5" y="0.0" width="172.5" height="75"/>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="75" id="LcI-f0-F6L"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1dP-Vk-6WV" userLabel="Diamond Triangle Stack">
-                                                <rect key="frame" x="5" y="223" width="365" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkZ-50-3O4" userLabel="Diamond Button" customClass="DiamondButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84" height="80"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIn-Bf-NK1" userLabel="TriangleButton" customClass="TriangleButton" customModule="Buttons">
-                                                        <rect key="frame" x="104" y="0.0" width="84.5" height="80"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLl-Ik-yOL" customClass="TriangleFlippedButton" customModule="Buttons">
-                                                        <rect key="frame" x="208.5" y="0.0" width="156.5" height="80"/>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="xKD-4V-Vwd"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-d1-duD" userLabel="Loading Circular Stack">
-                                                <rect key="frame" x="5" y="318" width="365" height="44"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNF-J8-FzD" customClass="LoadingCircularButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="44"/>
-                                                        <state key="normal" title="Load Circle">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="On0-pT-a2x"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-hB-pue" customClass="LoadingEdgeButton" customModule="Buttons">
-                                                        <rect key="frame" x="187.5" y="0.0" width="177.5" height="44"/>
-                                                        <state key="normal" title="Load Edge">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ltP-Qu-bIn"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="lV1-Sv-q0m"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-5n-U3g" userLabel="Loading Orb Stack">
-                                                <rect key="frame" x="5" y="377" width="365" height="44"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-D3-W8B" customClass="LoadingOrbsButton" customModule="Buttons">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TyS-44-m16" userLabel="Border Width Stack">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
-                                                        <state key="normal" title="Load Orbs">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EwA-nk-ztu"/>
-                                                        </connections>
-                                                    </button>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCZ-Ll-o0F" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ur-Xy-AeS" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6h-9U-1qI" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="t9H-rk-4m6"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CLc-fP-aSX" userLabel="Corner Radius Stack">
+                                                        <rect key="frame" x="0.0" y="54" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7P-2v-T4M" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDs-gM-ofj" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeD-41-Tae" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="RGb-FB-uoK"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tfG-l5-42e" userLabel="Border Stack">
+                                                        <rect key="frame" x="0.0" y="108" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbl-vw-4bm" customClass="BorderButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0g-qB-1Gu" customClass="BorderButton" customModule="Buttons">
+                                                                <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1D8-kf-sNc" customClass="BorderButton" customModule="Buttons">
+                                                                <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="Fka-5q-TqX"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wMt-a7-JSW" userLabel="Loading Stack">
+                                                        <rect key="frame" x="0.0" y="162" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYg-PC-Owv" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuO-Zg-rP4" userLabel="Loading" customClass="LoadingFillButton" customModule="Buttons">
+                                                                <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
+                                                                <state key="normal" title="Load Fill">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xgj-oE-eh4"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEe-JJ-FF4" customClass="LoadingGradientButton" customModule="Buttons">
+                                                                <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="Load Gradient">
+                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4L-sK-1TM"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="6a1-O5-Rwx"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zo8-ag-TIo" userLabel="Border Stack">
+                                                        <rect key="frame" x="0.0" y="216" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABm-8z-D4L" customClass="BorderButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Border">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qiq-A8-WIC" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="123.5" y="0.0" width="118" height="44"/>
+                                                                <state key="normal" title="Corner">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8z-AM-Zwv" customClass="SlidingEdgesButton" customModule="Buttons">
+                                                                <rect key="frame" x="246.5" y="0.0" width="118.5" height="44"/>
+                                                                <state key="normal" title="Edge">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="11e-Pk-f4F"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="hx2-vC-gPg"/>
-                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TK7-dF-tC5" userLabel="Change Color Stack">
-                                                <rect key="frame" x="5" y="436" width="365" height="44"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkQ-H0-XzB" customClass="DefaultButton" customModule="Buttons">
+                                                <rect key="frame" x="5" y="321" width="365" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="8op-eC-auK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Show">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="hideButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FF8-MO-vjh"/>
+                                                </connections>
+                                            </button>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QlI-pM-1Yl" userLabel="Special Stack">
+                                                <rect key="frame" x="5" y="352" width="365" height="165"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee0-8C-Jcz" userLabel="~Button" customClass="DefaultButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="44"/>
-                                                        <state key="normal" title="~Gradient">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="button2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZO9-St-xOv"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deO-6B-4g6" customClass="BorderButton" customModule="Buttons">
-                                                        <rect key="frame" x="187.5" y="0.0" width="177.5" height="44"/>
-                                                        <state key="normal" title="~Border">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="borderButton2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tzc-El-yTJ"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Flv-m4-liP" userLabel="Oval Stack">
+                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="75"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuS-Xn-7NV" userLabel="Oval Right Button" customClass="OvalRightButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="75"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWb-GR-jDT" userLabel="Oval Left Button" customClass="OvalLeftButton" customModule="Buttons">
+                                                                <rect key="frame" x="192.5" y="0.0" width="172.5" height="75"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="LcI-f0-F6L"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1dP-Vk-6WV" userLabel="Diamond Triangle Stack">
+                                                        <rect key="frame" x="0.0" y="85" width="365" height="80"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkZ-50-3O4" userLabel="Diamond Button" customClass="DiamondButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="80"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIn-Bf-NK1" userLabel="TriangleButton" customClass="TriangleButton" customModule="Buttons">
+                                                                <rect key="frame" x="104" y="0.0" width="84.5" height="80"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLl-Ik-yOL" customClass="TriangleFlippedButton" customModule="Buttons">
+                                                                <rect key="frame" x="208.5" y="0.0" width="156.5" height="80"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="xKD-4V-Vwd"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="qk0-xT-Jb8"/>
-                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BDg-cP-TPq" userLabel="Disabled Stack">
-                                                <rect key="frame" x="5" y="495" width="365" height="44"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-Oc-pYI" customClass="DefaultButton" customModule="Buttons">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <state key="normal" title="Disabled">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R02-xV-Ged" customClass="BorderButton" customModule="Buttons">
-                                                        <rect key="frame" x="187.5" y="0.0" width="177.5" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <state key="normal" title="Border Disabled">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euH-O4-VrQ" customClass="DefaultButton" customModule="Buttons">
+                                                <rect key="frame" x="5" y="357" width="365" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="JDy-0m-zuf"/>
+                                                    <constraint firstAttribute="height" constant="26" id="EoX-3P-Mj8"/>
                                                 </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cER-3F-mYq" userLabel="Loading Hop Stack">
-                                                <rect key="frame" x="5" y="554" width="365" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Show">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="hideButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="40n-hE-HHt"/>
+                                                </connections>
+                                            </button>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O3S-09-lPk" userLabel="Load Stack">
+                                                <rect key="frame" x="5" y="388" width="365" height="260"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBV-7s-s8n" customClass="LoadingHopButton" customModule="Buttons">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-d1-duD" userLabel="Loading Circular Stack">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
-                                                        <state key="normal" title="Loading Hop">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVL-k7-Yaf"/>
-                                                        </connections>
-                                                    </button>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNF-J8-FzD" customClass="LoadingCircularButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="44"/>
+                                                                <state key="normal" title="Load Circle">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="On0-pT-a2x"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-hB-pue" customClass="LoadingEdgeButton" customModule="Buttons">
+                                                                <rect key="frame" x="187.5" y="0.0" width="177.5" height="44"/>
+                                                                <state key="normal" title="Load Edge">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ltP-Qu-bIn"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="lV1-Sv-q0m"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-5n-U3g" userLabel="Loading Orb Stack">
+                                                        <rect key="frame" x="0.0" y="54" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-D3-W8B" customClass="LoadingOrbsButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
+                                                                <state key="normal" title="Load Orbs">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EwA-nk-ztu"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="hx2-vC-gPg"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TK7-dF-tC5" userLabel="Change Color Stack">
+                                                        <rect key="frame" x="0.0" y="108" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee0-8C-Jcz" userLabel="~Button" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="44"/>
+                                                                <state key="normal" title="~Gradient">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="button2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZO9-St-xOv"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deO-6B-4g6" customClass="BorderButton" customModule="Buttons">
+                                                                <rect key="frame" x="187.5" y="0.0" width="177.5" height="44"/>
+                                                                <state key="normal" title="~Border">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="borderButton2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tzc-El-yTJ"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="qk0-xT-Jb8"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BDg-cP-TPq" userLabel="Disabled Stack">
+                                                        <rect key="frame" x="0.0" y="162" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-Oc-pYI" customClass="DefaultButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <state key="normal" title="Disabled">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R02-xV-Ged" customClass="BorderButton" customModule="Buttons">
+                                                                <rect key="frame" x="187.5" y="0.0" width="177.5" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <state key="normal" title="Border Disabled">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="JDy-0m-zuf"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cER-3F-mYq" userLabel="Loading Hop Stack">
+                                                        <rect key="frame" x="0.0" y="216" width="365" height="44"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBV-7s-s8n" customClass="LoadingHopButton" customModule="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
+                                                                <state key="normal" title="Loading Hop">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="loadingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVL-k7-Yaf"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="0mH-Rj-uAC"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="0mH-Rj-uAC"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9mG-3J-fWe" userLabel="Details Stack">
-                                                <rect key="frame" x="5" y="613" width="365" height="322"/>
+                                                <rect key="frame" x="5" y="393" width="365" height="322"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MWf-EW-iD0">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="18"/>
@@ -438,14 +570,23 @@
                         <outlet property="backgroundGradientLabel" destination="fQ1-mO-IPD" id="zPt-ih-Qm2"/>
                         <outlet property="borderButton1" destination="ABm-8z-D4L" id="UOs-Vf-1qR"/>
                         <outlet property="borderButton2" destination="deO-6B-4g6" id="elT-eA-xzX"/>
+                        <outlet property="borderButton3" destination="Fbl-vw-4bm" id="0ho-2C-RUf"/>
+                        <outlet property="borderButton4" destination="q0g-qB-1Gu" id="Zll-GJ-Byv"/>
+                        <outlet property="borderButton5" destination="1D8-kf-sNc" id="4N8-9i-Rzu"/>
                         <outlet property="borderColorLabel" destination="fcQ-yl-bsy" id="Hcp-Nt-ByD"/>
                         <outlet property="borderColorView" destination="ZKi-3h-glu" id="XJa-rw-S12"/>
                         <outlet property="borderWidthLabel" destination="1La-Ud-Zgv" id="XsW-mg-pH7"/>
                         <outlet property="button1" destination="fYg-PC-Owv" id="gxr-1R-jnK"/>
                         <outlet property="button2" destination="ee0-8C-Jcz" id="8lH-9E-Iuc"/>
+                        <outlet property="button3" destination="SCZ-Ll-o0F" id="Idm-DE-a6X"/>
+                        <outlet property="button4" destination="4ur-Xy-AeS" id="hib-6x-Hbe"/>
+                        <outlet property="button5" destination="u6h-9U-1qI" id="5De-p8-hUg"/>
                         <outlet property="buttonColorLabel" destination="BXx-GA-blk" id="H1z-z2-j9N"/>
                         <outlet property="buttonColorView" destination="0sK-oy-byf" id="rOb-Ub-4KN"/>
                         <outlet property="cornerButton1" destination="Qiq-A8-WIC" id="GdF-F0-aUy"/>
+                        <outlet property="cornerButton3" destination="c7P-2v-T4M" id="C7s-lK-FuF"/>
+                        <outlet property="cornerButton4" destination="aDs-gM-ofj" id="eau-6O-gCD"/>
+                        <outlet property="cornerButton5" destination="EeD-41-Tae" id="hsN-W0-dRb"/>
                         <outlet property="cornerRadiusLabel" destination="iQi-cr-cpi" id="11T-7O-HM5"/>
                         <outlet property="diamondButton" destination="tkZ-50-3O4" id="5kh-6t-96a"/>
                         <outlet property="disabledBorderButton" destination="R02-xV-Ged" id="LaU-aJ-NH6"/>
@@ -453,6 +594,9 @@
                         <outlet property="disabledColorLabel" destination="bPx-5E-1Nd" id="KmN-1W-0LT"/>
                         <outlet property="disabledColorView" destination="esZ-co-zeb" id="J6e-cM-xix"/>
                         <outlet property="edgeButton1" destination="B8z-AM-Zwv" id="HRp-bk-jOg"/>
+                        <outlet property="hideButton1" destination="YjQ-ho-bhD" id="uL7-H5-It0"/>
+                        <outlet property="hideButton2" destination="qkQ-H0-XzB" id="7XZ-zd-iiV"/>
+                        <outlet property="hideButton3" destination="euH-O4-VrQ" id="VIn-ta-LhZ"/>
                         <outlet property="highlightColorLabel" destination="NOA-Fg-TUm" id="RFe-oW-dVP"/>
                         <outlet property="highlightColorView" destination="yXr-1T-4lc" id="ac2-sK-KjU"/>
                         <outlet property="isDisabledLabel" destination="fMS-q4-1uM" id="eIE-NH-NGx"/>
@@ -467,6 +611,9 @@
                         <outlet property="ovalStackView" destination="Flv-m4-liP" id="WpJ-S8-a5q"/>
                         <outlet property="scrollView" destination="xka-HR-6yU" id="8vY-Nd-5LS"/>
                         <outlet property="shadowedLabel" destination="ldm-pC-6yD" id="LT1-LS-wcf"/>
+                        <outlet property="stack1" destination="aFh-s6-QBq" id="k2v-zr-jd0"/>
+                        <outlet property="stack2" destination="QlI-pM-1Yl" id="WNS-7q-noK"/>
+                        <outlet property="stack3" destination="O3S-09-lPk" id="cXv-lz-Q5T"/>
                         <outlet property="triangleButton" destination="FIn-Bf-NK1" id="EKW-He-ejD"/>
                         <outlet property="triangleFlippedButton" destination="XLl-Ik-yOL" id="Un3-2m-kPt"/>
                     </connections>

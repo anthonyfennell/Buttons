@@ -96,10 +96,10 @@ struct TriangleFlippedButtonDrawable: Drawable {
         // TODO: - This method is not finished
         
         let path = UIBezierPath()
-        let left = bounds.minX + borderWidth / 2
-        let right = bounds.maxX - borderWidth / 2
-        let top = bounds.minY + borderWidth / 2
-        let bottom = bounds.maxY - borderWidth / 2
+        let left = bounds.minX
+        let right = bounds.maxX
+        let top = bounds.minY
+        let bottom = bounds.maxY
         let middleX = bounds.maxX / 2
         let radius = cornerRadius
         
@@ -133,10 +133,10 @@ struct TriangleFlippedButtonDrawable: Drawable {
     
     func getDefaultPath(bounds: CGRect, borderWidth: CGFloat, cornerRadius: CGFloat) -> UIBezierPath {
         let path = UIBezierPath()
-        let left = bounds.minX + borderWidth / 2
-        let right = bounds.maxX - borderWidth / 2
-        let top = bounds.minY + borderWidth / 2
-        let bottom = bounds.maxY - borderWidth / 2
+        let left = bounds.minX
+        let right = bounds.maxX
+        let top = bounds.minY
+        let bottom = bounds.maxY
         let middleX = bounds.maxX / 2
         path.lineWidth = borderWidth
         

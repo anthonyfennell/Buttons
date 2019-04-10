@@ -10,6 +10,26 @@ import UIKit
 import Buttons
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var hideButton1: DefaultButton!
+    @IBOutlet weak var hideButton2: DefaultButton!
+    @IBOutlet weak var hideButton3: DefaultButton!
+    
+    @IBOutlet weak var stack1: UIStackView!
+    @IBOutlet weak var stack2: UIStackView!
+    @IBOutlet weak var stack3: UIStackView!
+    
+    @IBOutlet weak var button3: DefaultButton!
+    @IBOutlet weak var button4: DefaultButton!
+    @IBOutlet weak var button5: DefaultButton!
+    
+    @IBOutlet weak var cornerButton3: DefaultButton!
+    @IBOutlet weak var cornerButton4: DefaultButton!
+    @IBOutlet weak var cornerButton5: DefaultButton!
+    
+    @IBOutlet weak var borderButton3: BorderButton!
+    @IBOutlet weak var borderButton4: BorderButton!
+    @IBOutlet weak var borderButton5: BorderButton!
 
     @IBOutlet weak var button1: DefaultButton!
     @IBOutlet weak var loadingButton1: LoadingFillButton!
@@ -75,21 +95,51 @@ class ViewController: UIViewController {
         colorGreen(button: self.disabledButton)
         colorOrange(button: self.disabledBorderButton)
         colorGreen(button: self.loadingHopButton)
+        colorPurple(button: self.cornerButton3)
+        colorPurple(button: self.cornerButton4)
+        colorPurple(button: self.cornerButton5)
+        colorBlue(button: self.borderButton3)
+        colorBlue(button: self.borderButton4)
+        colorBlue(button: self.borderButton5)
         
         self.borderButton1.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         self.borderButton2.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         
         self.button2.isGradientEnabled = true
+        self.hideButton1.isGradientEnabled = true
+        self.hideButton2.isGradientEnabled = true
+        self.hideButton3.isGradientEnabled = true
+        
         self.button1.isShadowed = true
         
         self.button1.borderWidth = 4.0
         self.borderButton1.borderWidth = 4.0
+        self.cornerButton1.borderWidth = 0.0
+        
+        self.hideButton1.cornerRadius = self.hideButton1.frame.height / 2
+        self.hideButton2.cornerRadius = self.hideButton2.frame.height / 2
+        self.hideButton3.cornerRadius = self.hideButton3.frame.height / 2
+        
+        // Increase border width left to right
+        self.button3.borderWidth = 0.0
+        self.button4.borderWidth = 4.0
+        self.button5.borderWidth = 8.0
+        
+        // Increase corner radius left to right
+        self.cornerButton3.cornerRadius = 5.0
+        self.cornerButton4.cornerRadius = 10.0
+        self.cornerButton5.cornerRadius = 20.0
+        
+        self.borderButton3.borderWidth = 0.0
+        self.borderButton4.borderWidth = 4.0
+        self.borderButton5.borderWidth = 8.0
+        self.borderButton5.cornerRadius = 8.0
         
         self.cornerButton1.cornerRadius = 4.0
         self.diamondButton.cornerRadius = 4.0
         self.loadingOrbsButton.cornerRadius = 4.0
-        self.button2.cornerRadius = 5.0
-        self.borderButton2.cornerRadius = 5.0
+        self.button2.cornerRadius = self.button2.frame.height / 2
+        self.borderButton2.cornerRadius = self.borderButton2.frame.height / 2
         self.loadingEdgeButton.cornerRadius = 4.0
         
         self.disabledButton.isEnabled = false
@@ -97,6 +147,7 @@ class ViewController: UIViewController {
         
         // Example of adding button programatically
         let circleButton = CircleButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        circleButton.isGradientEnabled = true
         colorBlue(button: circleButton)
         self.ovalStackView.addArrangedSubview(circleButton)
         
@@ -120,6 +171,60 @@ class ViewController: UIViewController {
         setRandomColorForBorder(button: self.borderButton2)
     }
     
+    @IBAction func hideButtonAction(_ sender: DefaultButton) {
+        var hide = false
+        var view: UIView!
+        if sender == self.hideButton1 {
+            hide = !self.stack1.isHidden
+            view = self.stack1
+        } else if sender == self.hideButton2 {
+            hide = !self.stack2.isHidden
+            view = self.stack2
+        } else if sender == self.hideButton3 {
+            hide = !self.stack3.isHidden
+            view = self.stack3
+        }
+        sender.setTitle(hide ? "Show" : "Hide", for: .normal)
+        if hide {
+            hideAnimator(view: view).startAnimation()
+        } else {
+            showAnimator(view: view).startAnimation()
+        }
+    }
+    
+    func showAnimator(view: UIView) -> UIViewPropertyAnimator {
+        let frame = view.frame
+        view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 0.01)
+        view.alpha = 0.0
+        let animator = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn)
+        animator.addAnimations {
+            view.alpha = 1.0
+        }
+        animator.addAnimations {
+            view.frame = frame
+        }
+        animator.addAnimations {
+            view.isHidden = false
+        }
+        return animator
+    }
+    
+    func hideAnimator(view: UIView) -> UIViewPropertyAnimator {
+        let frame = view.frame
+        let toFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 0.01)
+        let animator = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn)
+        animator.addAnimations {
+            view.alpha = 0.0
+        }
+        animator.addAnimations {
+            view.frame = toFrame
+        }
+        animator.addAnimations {
+            view.isHidden = true
+        }
+        return animator
+    }
+    
     @objc
     func handleTap(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: self.scrollView)
@@ -134,7 +239,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     
     // MARK: - Details
     func updateDetailsWith(button: DefaultButton) {
@@ -226,10 +330,10 @@ class ViewController: UIViewController {
     }
     
     func colorRed(button: DefaultButton) {
-        ButtonUtils.color(button: button, buttonColor: ColorHex.red2.color,
-                          highlightColor: ColorHex.red4.color,
-                          borderColor: ColorHex.red4.color,
-                          disabledColor: ColorHex.red2.color.withAlphaComponent(0.35))
+        ButtonUtils.color(button: button, buttonColor: ColorHex.red1.color,
+                          highlightColor: ColorHex.red2.color,
+                          borderColor: ColorHex.red2.color,
+                          disabledColor: ColorHex.red1.color.withAlphaComponent(0.35))
     }
     
     func colorGreen(button: DefaultButton) {

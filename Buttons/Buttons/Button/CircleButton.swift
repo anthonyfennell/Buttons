@@ -18,11 +18,10 @@ public class CircleButton: DefaultButton {
 struct CircleButtonDrawable: Drawable {
     func getPath(bounds: CGRect, borderWidth: CGFloat, cornerRadius: CGFloat) -> UIBezierPath {
         let path = UIBezierPath()
-        let halfBorderWidth = borderWidth / 2
         let width = bounds.width
         let height = bounds.height
-        let radius = bounds.maxX < bounds.maxY ? width / 2 - halfBorderWidth : height / 2 - halfBorderWidth
-        let right = bounds.midX + radius - halfBorderWidth
+        let radius = bounds.maxX < bounds.maxY ? width / 2 : height / 2
+        let right = bounds.midX + radius
         path.lineWidth = borderWidth
         
         let startPoint = CGPoint(x: right, y: bounds.midY)
