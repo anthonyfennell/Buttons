@@ -102,20 +102,25 @@ class ViewController: UIViewController {
         colorBlue(button: self.borderButton4)
         colorBlue(button: self.borderButton5)
         
+        // Assign a light highlight color for border buttons
         self.borderButton1.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         self.borderButton2.highlightColor = ColorHex.orange2.color.withAlphaComponent(0.5)
         
+        // Enable gradient
         self.button2.isGradientEnabled = true
         self.hideButton1.isGradientEnabled = true
         self.hideButton2.isGradientEnabled = true
         self.hideButton3.isGradientEnabled = true
         
+        // Enable shadow
         self.button1.isShadowed = true
         
+        // Assign a border width
         self.button1.borderWidth = 4.0
         self.borderButton1.borderWidth = 4.0
         self.cornerButton1.borderWidth = 0.0
         
+        // Increase corner radius
         self.hideButton1.cornerRadius = self.hideButton1.frame.height / 2
         self.hideButton2.cornerRadius = self.hideButton2.frame.height / 2
         self.hideButton3.cornerRadius = self.hideButton3.frame.height / 2
@@ -130,11 +135,13 @@ class ViewController: UIViewController {
         self.cornerButton4.cornerRadius = 10.0
         self.cornerButton5.cornerRadius = 20.0
         
+        // Increase border width
         self.borderButton3.borderWidth = 0.0
         self.borderButton4.borderWidth = 4.0
         self.borderButton5.borderWidth = 8.0
         self.borderButton5.cornerRadius = 8.0
         
+        // Assign corner radius
         self.cornerButton1.cornerRadius = 4.0
         self.diamondButton.cornerRadius = 4.0
         self.loadingOrbsButton.cornerRadius = 4.0
@@ -142,6 +149,7 @@ class ViewController: UIViewController {
         self.borderButton2.cornerRadius = self.borderButton2.frame.height / 2
         self.loadingEdgeButton.cornerRadius = 4.0
         
+        // Disable buttons
         self.disabledButton.isEnabled = false
         self.disabledBorderButton.isEnabled = false
         
@@ -151,6 +159,7 @@ class ViewController: UIViewController {
         colorBlue(button: circleButton)
         self.ovalStackView.addArrangedSubview(circleButton)
         
+        // Extra details
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.cancelsTouchesInView = false
         self.scrollView.addGestureRecognizer(tap)
@@ -171,60 +180,10 @@ class ViewController: UIViewController {
         setRandomColorForBorder(button: self.borderButton2)
     }
     
-    @IBAction func hideButtonAction(_ sender: DefaultButton) {
-        var hide = false
-        var view: UIView!
-        if sender == self.hideButton1 {
-            hide = !self.stack1.isHidden
-            view = self.stack1
-        } else if sender == self.hideButton2 {
-            hide = !self.stack2.isHidden
-            view = self.stack2
-        } else if sender == self.hideButton3 {
-            hide = !self.stack3.isHidden
-            view = self.stack3
-        }
-        sender.setTitle(hide ? "Show" : "Hide", for: .normal)
-        if hide {
-            hideAnimator(view: view).startAnimation()
-        } else {
-            showAnimator(view: view).startAnimation()
-        }
-    }
     
-    func showAnimator(view: UIView) -> UIViewPropertyAnimator {
-        let frame = view.frame
-        view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 0.01)
-        view.alpha = 0.0
-        let animator = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn)
-        animator.addAnimations {
-            view.alpha = 1.0
-        }
-        animator.addAnimations {
-            view.frame = frame
-        }
-        animator.addAnimations {
-            view.isHidden = false
-        }
-        return animator
-    }
     
-    func hideAnimator(view: UIView) -> UIViewPropertyAnimator {
-        let frame = view.frame
-        let toFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 0.01)
-        let animator = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn)
-        animator.addAnimations {
-            view.alpha = 0.0
-        }
-        animator.addAnimations {
-            view.frame = toFrame
-        }
-        animator.addAnimations {
-            view.isHidden = true
-        }
-        return animator
-    }
     
+    // MARK: - Details
     @objc
     func handleTap(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: self.scrollView)
@@ -240,7 +199,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Details
     func updateDetailsWith(button: DefaultButton) {
         self.buttonColorLabel.text = button.buttonColor.toHexString()
         self.buttonColorView.backgroundColor = button.buttonColor
@@ -300,7 +258,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Color entire button
+    // Color Buttons
     func colorPurple(button: DefaultButton) {
         ButtonUtils.color(button: button, buttonColor: ColorHex.purple2.color,
                           highlightColor: ColorHex.purple4.color,
@@ -343,6 +301,61 @@ class ViewController: UIViewController {
                           disabledColor: ColorHex.green2.color.withAlphaComponent(0.35))
     }
     
+    
+    // MARK: - Show / Hide buttons
+    @IBAction func hideButtonAction(_ sender: DefaultButton) {
+        var hide = false
+        var view: UIView!
+        if sender == self.hideButton1 {
+            hide = !self.stack1.isHidden
+            view = self.stack1
+        } else if sender == self.hideButton2 {
+            hide = !self.stack2.isHidden
+            view = self.stack2
+        } else if sender == self.hideButton3 {
+            hide = !self.stack3.isHidden
+            view = self.stack3
+        }
+        sender.setTitle(hide ? "Show" : "Hide", for: .normal)
+        if hide {
+            hideAnimator(view: view).startAnimation()
+        } else {
+            showAnimator(view: view).startAnimation()
+        }
+    }
+    
+    func showAnimator(view: UIView) -> UIViewPropertyAnimator {
+        let frame = view.frame
+        view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 0.01)
+        view.alpha = 0.0
+        let animator = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn)
+        animator.addAnimations {
+            view.alpha = 1.0
+        }
+        animator.addAnimations {
+            view.frame = frame
+        }
+        animator.addAnimations {
+            view.isHidden = false
+        }
+        return animator
+    }
+    
+    func hideAnimator(view: UIView) -> UIViewPropertyAnimator {
+        let frame = view.frame
+        let toFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 0.01)
+        let animator = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn)
+        animator.addAnimations {
+            view.alpha = 0.0
+        }
+        animator.addAnimations {
+            view.frame = toFrame
+        }
+        animator.addAnimations {
+            view.isHidden = true
+        }
+        return animator
+    }
     
 }
 
